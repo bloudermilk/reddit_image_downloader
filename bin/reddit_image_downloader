@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "reddit_image_downloader"
+
+RedditImageDownloader::Processor.process!(
+  RedditImageDownloader::OptionParser.parse(ARGV)
+)
