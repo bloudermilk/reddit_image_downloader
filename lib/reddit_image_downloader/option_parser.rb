@@ -17,8 +17,8 @@ module RedditImageDownloader
     SUBREDDIT_FORMATS = %W[-r --subreddits=SUB1,SUB2]
     SUBREDDIT_DESC = "List of subreddits to download from"
 
-    PAGE_FORMATS = %W[-p --page=PAGE]
-    PAGE_DESC = "Page to download (top [default], new, controversial)"
+    PATH_FORMATS = %W[-d --destination=PATH]
+    PATH_DESC = "Path to download images to (defaults to current directory)"
 
     WIDTH_FORMATS = %W[-x --min-width=WIDTH]
     WIDTH_DESC = "Only download images at least WIDTH wide"
@@ -26,8 +26,8 @@ module RedditImageDownloader
     HEIGHT_FORMATS = %W[-y --min-height=HEIGHT]
     HEIGHT_DESC = "Only download images at least HEIGHT tall"
 
-    PATH_FORMATS = %W[-d --destination=PATH]
-    PATH_DESC = "Path to download images to (defaults to current directory)"
+    PAGE_FORMATS = %W[-p --page=PAGE]
+    PAGE_DESC = "Page to download (top [default], new, controversial)"
 
     DAYS_FORMATS = %W[-a --max-age=DAYS]
     DAYS_DESC = "Purge files in destination folder older than DAYS days"
@@ -45,8 +45,8 @@ module RedditImageDownloader
           options[:subreddits] += subreddits
         end
 
-        parser.on(*PAGE_FORMATS, PAGES, PAGE_DESC) do |page|
-          options[:page] = page
+        parser.on(*PATH_FORMATS, PATH_DESC) do |destination|
+          options[:destination] = destination
         end
 
         parser.on(*WIDTH_FORMATS, Integer, WIDTH_DESC) do |min_width|
@@ -57,8 +57,8 @@ module RedditImageDownloader
           options[:min_height] = min_height
         end
 
-        parser.on(*PATH_FORMATS, PATH_DESC) do |destination|
-          options[:destination] = destination
+        parser.on(*PAGE_FORMATS, PAGES, PAGE_DESC) do |page|
+          options[:page] = page
         end
 
         parser.on(*DAYS_FORMATS, Integer, DAYS_DESC) do |days|
