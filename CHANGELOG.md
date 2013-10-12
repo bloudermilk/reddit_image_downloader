@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.1
+
+* Fixes bug with `--min-width` and `--min-height`
+
 ## v0.1.0
 
 * Adds `-v` and `--version` for printing current version
