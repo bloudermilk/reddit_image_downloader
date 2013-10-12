@@ -13,7 +13,7 @@ module RedditImageDownloader
 
           reader << download.body
 
-          if reader.width > options[:min_width] && reader.height > options[:min_height]
+          if reader.width >= options[:min_width] && reader.height >= options[:min_height]
             filename = "#{listing["id"]}.#{reader.type}"
             destination = File.join(options[:destination], filename)
 
