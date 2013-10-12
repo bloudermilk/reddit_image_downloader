@@ -81,6 +81,12 @@ every few hours.
 
 https://gist.github.com/bloudermilk/6943858
 
+## Thanks
+
+This gem was developed during my open source time at [philosophie][philosophie].
+
+[![philosophie][logo]][philosophie]
+
 ## Contributing
 
 1. Fork it
@@ -88,9 +94,6 @@ https://gist.github.com/bloudermilk/6943858
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
-[earthporn]: http://reddit.com/r/EarthPorn
-[awww]: http://reddit.com/r/awww
 
 ## License
 
@@ -116,3 +119,8 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[earthporn]: http://reddit.com/r/EarthPorn
+[awww]: http://reddit.com/r/awww
+[philosophie]: http://gophilosophie.com
+[logo]: http://patbenatar.github.io/showoff/images/philosophie.png
