@@ -7,11 +7,15 @@ Gem::Specification.new do |spec|
   spec.name          = "reddit_image_downloader"
   spec.version       = RedditImageDownloader::VERSION
   spec.authors       = ["Brendan Loudermilk"]
-  spec.email         = ["brendan@gophilosophie.com"]
-  spec.description   = %q{Download images from Reddit}
-  spec.summary       = %q{Download images from Reddit}
+  spec.email         = ["bloudermilk@gmail.com"]
+  spec.summary       = %q{Command line tool to download images from Reddit}
   spec.homepage      = "https://github.com/bloudermilk/reddit_image_downloader"
   spec.license       = "MIT"
+  spec.description = <<-EOF
+    Reddit Image Downloader is a command line tool for downloading images from
+    Reddit. Users can specify one or more subreddits, minimum dimensions, a
+    destination path, and a maximum age for images.
+  EOF
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
