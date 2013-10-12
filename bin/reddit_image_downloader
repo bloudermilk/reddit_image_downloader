@@ -2,6 +2,10 @@
 
 require "reddit_image_downloader"
 
-RedditImageDownloader::Processor.process!(
-  RedditImageDownloader::OptionParser.parse(ARGV)
-)
+parser = RedditImageDownloader::OptionParser.parse!(ARGV)
+
+case parser.options[:subcommand]
+when :help then puts parser.docs
+when :version then puts RedditImageDownloader::VERSION
+when :download then RedditImageDownloader::Processor.process!(parser.options)
+end

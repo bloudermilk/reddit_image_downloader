@@ -1,15 +1,15 @@
 module RedditImageDownloader
-  module OptionParser
+  class OptionParser
     PAGES = %W[top new controversial]
 
     DEFAULT_OPTIONS = {
-      show_help: false,
       subreddits: [],
       min_width: 0,
       min_height: 0,
       destination: Dir.pwd,
       max_age: nil,
       page: :top,
+      subcommand: :download,
     }
 
     BANNER = "Usage: reddit_image_downloader [options]"
@@ -32,13 +32,33 @@ module RedditImageDownloader
     DAYS_FORMATS = %W[-a --max-age=DAYS]
     DAYS_DESC = "Purge files in destination folder older than DAYS days"
 
+    VERSION_FORMATS = %W[-v --version]
+    VERSION_DESC = "Print the version of reddit_image_downloader"
+
     HELP_FORMATS = %W[-h --help]
     HELP_DESC = "Show this message"
 
-    def self.parse(args)
-      options = DEFAULT_OPTIONS.dup
+    attr_accessor :options, :args
 
-      parser = ::OptionParser.new do |parser|
+    def self.parse!(*args)
+      new(*args).tap(&:parse!)
+    end
+
+    def initialize(args)
+      @args = args
+      @options = DEFAULT_OPTIONS.dup
+    end
+
+    def parse!
+      parser.parse!(args)
+    end
+
+    def docs
+      parser.to_s
+    end
+
+    def parser
+      @parser ||= ::OptionParser.new do |parser|
         parser.banner = BANNER
 
         parser.on(*SUBREDDIT_FORMATS, Array, SUBREDDIT_DESC) do |subreddits|
@@ -65,14 +85,14 @@ module RedditImageDownloader
           options[:max_age] = days
         end
 
+        parser.on_tail(*VERSION_FORMATS, VERSION_DESC) do
+          options[:subcommand] = :version
+        end
+
         parser.on_tail(*HELP_FORMATS, HELP_DESC) do
-          options[:show_help] = true
+          options[:subcommand] = :help
         end
       end
-
-      parser.parse!(args)
-
-      options
     end
   end
 end
