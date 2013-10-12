@@ -72,6 +72,15 @@ the help message:
 
     $ reddit_image_downloader -h
 
+## Automation
+
+If you're using this to maintain a library of images for use as wallpapers, you
+probably don't want to have to run the command every day to get the freshest
+images. If you're on OS X, I wrote a `launchd` plist which can run the command
+every few hours.
+
+https://gist.github.com/bloudermilk/6943858
+
 ## Contributing
 
 1. Fork it
